@@ -19,7 +19,7 @@ const Bio = () => {
             mobile application development. I am always looking for ways to
             improve myself and consider myself very teachable. I am a team
             player and always tries my best to do my part as a team member while
-            offer my help to anyone who needs it. I believe very much and hard
+            offer my help to anyone who needs it. I believe very much in hard
             work and live by the principle, "if it must be done it must be done
             well".
           </p>

@@ -132,7 +132,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="justify-between md:flex ">
+          <div className="md:justify-between md:flex ">
             <ReCAPTCHA
               sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
               ref={captchaRef}
