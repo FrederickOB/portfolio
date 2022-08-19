@@ -43,13 +43,15 @@ const Contact = () => {
     }
   };
   return (
-    <div className="flex items-center w-full h-screen p-10">
+    <div className="flex items-center w-full p-10 md:h-screen">
       <div className="grid w-full grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col justify-between mt-4 text-white">
           <div className="w-full text ">
-            <h1 className="text-4xl font-bold text-blue-400 ">Contact me</h1>
+            <h1 className="mb-6 text-xl font-bold text-blue-400 md:text-4xl md:mb-0">
+              Contact me
+            </h1>
           </div>
-          <div className="pr-10 text-xl">
+          <div className="pr-10 text-sm md:text-xl">
             <p>
               Let collaborate to bring your visions into a reality. available to
               work remotely and locally.
@@ -59,13 +61,13 @@ const Contact = () => {
               using the form.
             </h3>
           </div>
-          <div className="space-y-10 ">
+          <div className="space-y-4 md:space-y-10 ">
             <div className="">
               <a
                 target="_blank"
                 rel="noreferrer noopener"
                 href="https://github.com/FrederickOB"
-                className="flex text-5xl transition-colors duration-700 hover:text-blue-400 hover:animate-pulse"
+                className="flex transition-colors duration-700 md:text-2xl hover:text-blue-400 hover:animate-pulse"
               >
                 <FiGithub />
                 <span className="ml-4">@FrederickOB</span>
@@ -76,7 +78,7 @@ const Contact = () => {
                 target="_blank"
                 rel="noreferrer noopener"
                 href="https://www.linkedin.com/in/frederick-ofori-boadu/"
-                className="flex text-5xl transition-colors duration-700 hover:text-blue-400 hover:animate-pulse"
+                className="flex transition-colors duration-700 md:text-2xl hover:text-blue-400 hover:animate-pulse"
               >
                 <FiLinkedin />
                 <span className="ml-4"> Frederick Ofori-Boadu</span>
@@ -87,7 +89,7 @@ const Contact = () => {
                 target="_blank"
                 rel="noreferrer noopener"
                 href="https://twitter.com/FRED_THE_THIRD"
-                className="flex text-5xl transition-colors duration-700 hover:text-blue-400 hover:animate-pulse"
+                className="flex transition-colors duration-700 md:text-2xl hover:text-blue-400 hover:animate-pulse"
               >
                 <FiTwitter />
                 <span className="ml-4"> @FRED_THE_THIRD</span>

@@ -28,7 +28,7 @@ function Intro() {
             />
           </div>
         </div>
-        <div className="w-full mb-8 text-6xl font-extrabold text-center text-white ">
+        <div className="w-full font-extrabold text-center text-white md-8 md:text-6xl ">
           <div className="flex justify-center ">
             <h1 className="mr-3 text">I am : </h1>
             <Typewriter
@@ -43,7 +43,7 @@ function Intro() {
               }}
             />
           </div>
-          <div className="mt-12 text-4xl font-bold text-white">
+          <div className="text-sm font-bold text-white md:mt-12 md:text-4xl">
             {done && (
               <Typewriter
                 onInit={(typewriter) => {
@@ -60,28 +60,28 @@ function Intro() {
           </div>
         </div>
         <div className="grid grid-cols-4 gap-6 mt-10">
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl">
             <FaCss3 />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl">
             <FaHtml5 />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl">
             <FaJs />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl ">
             <FaReact />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl">
             <FaNodeJs />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl">
             <GrGatsbyjs />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-blue-500 md:text-6xl">
             <FiFigma />
           </p>
-          <p className="text-6xl text-blue-500">
+          <p className="text-lg text-blue-500 md:text-6xl">
             <SiAdobexd />
           </p>
         </div>

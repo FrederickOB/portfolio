@@ -4,11 +4,13 @@ import { HiOutlineDocumentDownload } from "react-icons/hi";
 
 const Bio = () => {
   return (
-    <div className="flex items-center h-screen p-8">
+    <div className="flex items-center p-8 md:h-screen">
       <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="flex flex-col justify-between p-8">
-          <h3 className="text-4xl font-bold text-blue-400">Who Am I?</h3>
-          <p className="text-xl text-white">
+        <div className="flex flex-col justify-between p-8 space-y-4 md:space-y-0">
+          <h3 className="text-xl font-bold text-blue-400 md:text-4xl">
+            Who Am I?
+          </h3>
+          <p className="text-sm text-white md:text-base 2xl:text-xl">
             I am an experience Front-End developer who constantly seeks out how
             to improve my skills and broaden my area of knowledge and expertise
             in every field I find myself in. I have three years of professional
@@ -23,9 +25,9 @@ const Bio = () => {
           </p>
 
           <div className="flex justify-end">
-            <button className="flex items-center py-2 pl-4 pr-5 text-base text-black transition-transform bg-blue-400 rounded-lg hover:scale-110">
+            <button className="flex items-center py-2 pl-4 pr-5 text-sm text-black transition-transform bg-blue-400 rounded-lg md:text-base hover:scale-110">
               Download CV
-              <HiOutlineDocumentDownload className="ml-2 text-xl" />
+              <HiOutlineDocumentDownload className="ml-2 md:text-xl" />
             </button>
           </div>
         </div>

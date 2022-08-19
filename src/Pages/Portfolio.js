@@ -27,13 +27,13 @@ import SwipeSlideCard from "../Components.js/SwipeSlideCard/SwipeSlideCard";
 
 export default function Portfolio() {
   return (
-    <div className="h-screen p-10">
-      <h3 className="mb-8 text-4xl font-bold text-center text-blue-400 ">
+    <div className="p-10 md:h-screen">
+      <h3 className="text-xl font-bold text-center text-blue-400 md:text-4xl md-8 ">
         Portfolio
       </h3>
       <div className="grid items-center justify-center grid-cols-1 md:grid-cols-2">
         <div>
-          <h3 className="mb-8 text-xl font-semibold text-center text-white ">
+          <h3 className="font-semibold text-center text-white md:text-xl md-8 ">
             Front-End Dev
           </h3>
           <Swiper
@@ -77,7 +77,7 @@ export default function Portfolio() {
           </Swiper>
         </div>
         <div>
-          <h3 className="mb-8 text-xl font-semibold text-center text-white ">
+          <h3 className="text-xl font-semibold text-center text-white md-8 ">
             UI/UX
           </h3>
 
