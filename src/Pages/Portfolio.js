@@ -17,12 +17,10 @@ import {
   FaCss3,
   FaHtml5,
   FaJs,
-  FaNodeJs,
+  
   FaReact,
-  FaTelegram,
 } from "react-icons/fa";
 import { SiAdobexd, SiTailwindcss } from "react-icons/si";
-import { GrGatsbyjs } from "react-icons/gr";
 import SwipeSlideCard from "../Components.js/SwipeSlideCard/SwipeSlideCard";
 
 export default function Portfolio() {

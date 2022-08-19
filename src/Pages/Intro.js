@@ -1,15 +1,8 @@
 import Typewriter from "typewriter-effect";
 import { useState } from "react";
 import picture from "../assets/memoji.gif";
-import { FiFigma, FiGithub, FiLinkedin } from "react-icons/fi";
-import {
-  FaCss3,
-  FaHtml5,
-  FaJs,
-  FaNodeJs,
-  FaReact,
-  FaTelegram,
-} from "react-icons/fa";
+import { FiFigma } from "react-icons/fi";
+import { FaCss3, FaHtml5, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
 import { SiAdobexd } from "react-icons/si";
 import { GrGatsbyjs } from "react-icons/gr";
 

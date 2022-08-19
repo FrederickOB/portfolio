@@ -1,4 +1,4 @@
-import { BsArrowRight } from "react-icons/bs";
+// import { BsArrowRight } from "react-icons/bs";
 
 export default function SwipeSlideCard({
   picture,
@@ -13,7 +13,11 @@ export default function SwipeSlideCard({
         {video ? (
           <video src={video} muted autoPlay loop />
         ) : (
-          <img src={picture} className="w-full md:h-[25rem] h-[12rem]" />
+          <img
+            src={picture}
+            className="w-full md:h-[25rem] h-[12rem]"
+            alt={`${title} project`}
+          />
         )}
       </div>
       <div className="px-6 py-4 space-y-4 text-white bg-black border-b-2 border-blue-400 border-x-2 rounded-b-xl">

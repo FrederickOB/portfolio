@@ -25,10 +25,14 @@ const Bio = () => {
           </p>
 
           <div className="flex justify-end">
-            <button className="flex items-center py-2 pl-4 pr-5 text-sm text-black transition-transform bg-blue-400 rounded-lg md:text-base hover:scale-110">
+            <a
+              href={require("../assets/Frederick_Ofori-Boadu_CV.pdf")}
+              className="flex items-center py-2 pl-4 pr-5 text-sm text-black transition-transform bg-blue-400 rounded-lg md:text-base hover:scale-110"
+              download
+            >
               Download CV
               <HiOutlineDocumentDownload className="ml-2 md:text-xl" />
-            </button>
+            </a>
           </div>
         </div>
         <div className="p-8 space-y-5 ">
