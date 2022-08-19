@@ -11,17 +11,19 @@ const Bio = () => {
             Who Am I?
           </h3>
           <p className="text-sm text-white md:text-base 2xl:text-xl">
-            I am an experience Front-End developer who constantly seeks out how
-            to improve my skills and broaden my area of knowledge and expertise
+            I am an experienced Front-End developer who is constantly seeking
+            out ways to improve my skills and also broaden my area of knowledge
             in every field I find myself in. I have three years of professional
             software and UI/UX development under my belt. I predominantly work
-            with React for web application development and React Native for
-            mobile application development. I am always looking for ways to
-            improve myself and consider myself very teachable. I am a team
-            player and always tries my best to do my part as a team member while
-            offer my help to anyone who needs it. I believe very much in hard
-            work and live by the principle, "if it must be done it must be done
-            well".
+            as a frontend engineer where I mostly use React for building
+            performant, user-friendly, and accessible web applications. I also
+            double as a mobile application engineer using React Native for
+            mobile application development. I generally consider myself a very
+            teachable person who is always keen on learning new things from
+            others. As a team player, I always try my best to do my part as a
+            team member while offering help to others who may need it. I believe
+            very much in hard work and live by the principle, "if it must be
+            done it must be done well".
           </p>
 
           <div className="flex justify-end">

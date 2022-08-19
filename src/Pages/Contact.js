@@ -53,11 +53,11 @@ const Contact = () => {
           </div>
           <div className="pr-10 text-sm md:text-xl">
             <p>
-              Let collaborate to bring your visions into a reality. available to
-              work remotely and locally.
+              Let's collaborate to bring your visions into a reality. I am
+              available to work remotely and locally.
             </p>
             <h3 className="mb-10">
-              Reach on my following social media accounts and send me an email
+              Reach me on my social media accounts below or send me an email
               using the form.
             </h3>
           </div>
