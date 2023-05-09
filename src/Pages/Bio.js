@@ -13,7 +13,7 @@ const Bio = () => {
           <p className="text-sm text-white md:text-base 2xl:text-xl">
             I am an experienced Front-End developer who is constantly seeking
             out ways to improve my skills and also broaden my area of knowledge
-            in every field I find myself in. I have three years of professional
+            in every field I find myself in. I have four years of professional
             software and UI/UX development under my belt. I predominantly work
             as a frontend engineer where I mostly use React for building
             performant, user-friendly, and accessible web applications. I also
@@ -28,7 +28,7 @@ const Bio = () => {
 
           <div className="flex justify-end">
             <a
-              href={require("../assets/Frederick_Ofori-Boadu_CV.pdf")}
+              href={require("../assets/Frederick_Osei_Ofori-Boadu_-_Frontend_Developer-2.pdf")}
               className="flex items-center py-2 pl-4 pr-5 text-sm text-black transition-transform bg-blue-400 rounded-lg md:text-base hover:scale-110"
               download
             >
