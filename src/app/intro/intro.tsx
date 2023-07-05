@@ -76,7 +76,7 @@ export default function Intro() {
         >
           <Image
             className={`relative lg:scale-150 ${color.glow} pulseAnimation`}
-            src="/memoji.gif"
+            src="https://firebasestorage.googleapis.com/v0/b/portoflio-79eeb.appspot.com/o/memoji.gif?alt=media&token=b6027028-1d21-4948-88ae-de0b5092c953"
             alt="Next.js Logo"
             width={300}
             height={300}
