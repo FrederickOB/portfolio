@@ -24,14 +24,14 @@ export default function Intro() {
             <p className="leading-6 ">
               Join me on an epic coding adventure as your trusty front-end
               developer 🚀! With expertise in ReactJS, NextJS, React Native,
-              Typescript, and the magic of Figma, I'm here to create
+              Typescript, and the magic of Figma, I&apos;m here to create
               mind-blowing web designs that wow users. From solving complex
-              issues to prioritizing performance and user experience, I'm the
-              adaptable, collaborative wizard you need. Together, we'll
+              issues to prioritizing performance and user experience, I&apos;m
+              the adaptable, collaborative wizard you need. Together, we&apos;ll
               revolutionize the digital landscape and craft unforgettable
               websites. So, buckle up and explore my interactive portfolio.
-              Let's make the web a more delightful place 😊, one line of code at
-              a time!
+              Let&apos;s make the web a more delightful place 😊, one line of
+              code at a time!
             </p>
             <div className="flex space-x-4 md:space-x-4">
               <a
