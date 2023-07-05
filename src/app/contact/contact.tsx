@@ -20,9 +20,11 @@ export default function Contact() {
     email: "",
     message: "",
   });
-  const captchaRef = useRef(null);
+  const captchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleChange = (e) => {
+  const handleChange = (e: {
+    target: HTMLInputElement | HTMLTextAreaElement;
+  }) => {
     setEmailDetails({
       ...emailDetails,
       [e.target.name]: e.target.value,
@@ -32,7 +34,13 @@ export default function Contact() {
   const onSubmit = () => {
     const token = captchaRef?.current?.getValue();
     captchaRef?.current?.reset();
-    if (emailDetails.name && emailDetails.email && emailDetails.message) {
+    if (
+      emailDetails.name &&
+      emailDetails.email &&
+      emailDetails.message &&
+      process.env.NEXT_PUBLIC_MAIL_SERVICE_ID &&
+      process.env.NEXT_PUBLIC_MAIL_TEMPLATE_ID
+    ) {
       emailjs
         .send(
           process.env.NEXT_PUBLIC_MAIL_SERVICE_ID,
@@ -150,10 +158,12 @@ export default function Contact() {
               send mail
               <BiMailSend className="ml-2 text-xl" />
             </button>
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              ref={captchaRef}
-            />
+            {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                ref={captchaRef}
+              />
+            )}
           </div>
         </div>
       </div>
