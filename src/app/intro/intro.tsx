@@ -7,6 +7,7 @@ import { HiOutlineDocumentDownload } from "react-icons/hi";
 
 export default function Intro() {
   const { color } = useThemeColor();
+
   return (
     <main className="flex items-center justify-center w-screen h-full min-h-screen px-8 pt-20 pb-12 lg:p-0 scroll-smooth">
       <section className="grid w-full grid-cols-1 max-w-[75rem] lg:grid-cols-12 gap-10 ">
@@ -19,7 +20,7 @@ export default function Intro() {
           </div>
 
           <div
-            className={`py-3 space-y-4 text-xs font-thin ${color.text} border-t-2 ${color.border} md:text-sm`}
+            className={`py-3 space-y-4 text-xs font-thin ${color.text} border-t-2 ${color.border} md:text-sm bg-white dark:bg-black`}
           >
             <p className="leading-6 ">
               Join me on an epic coding adventure as your trusty front-end

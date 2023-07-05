@@ -6,10 +6,14 @@ import Navbar from "@/components/NavBar/Navbar";
 import Intro from "./intro/intro";
 import { useEffect, useState } from "react";
 import { useThemeColor } from "@/context/ColorThemeContext";
-
+import { useTheme } from "next-themes";
 export default function Index() {
   const [number, setNumber] = useState(0);
   const { color } = useThemeColor();
+  const { systemTheme } = useTheme();
+
+  const iconsOpacity = systemTheme === "dark" ? "0.2" : "0.1";
+
   useEffect(() => {
     // create interval
     const interval = setInterval(
@@ -26,7 +30,9 @@ export default function Index() {
   return (
     <div
       style={{
-        backgroundImage: `url("${ADINKRA_ICONS(color.hex)[number]}")`,
+        backgroundImage: `url("${
+          ADINKRA_ICONS(color.hex, iconsOpacity)[number]
+        }")`,
       }}
       className="w-screen min-h-screen font-mono bg-fixed bg-white dark:bg-black "
     >

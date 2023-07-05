@@ -23,25 +23,25 @@ export default function Navbar() {
               width={1000}
               height={431}
               alt="image"
-              className="object-contain w-24 h-10 shadow-lg aspect-video "
+              className="object-contain w-24 h-10 shadow-lg aspect-video invert dark:invert-0 "
             />
           </div>
 
           <div className="justify-center hidden divide-x divide-white dark:divide-black lg:flex ">
             <ScrollLink
-              className="px-6 hover:underline hover:underline-offset-4"
+              className="px-6 text-white dark:text-black hover:underline hover:underline-offset-4"
               href="/#intro"
             >
               Intro
             </ScrollLink>
             <ScrollLink
-              className="px-6 hover:underline hover:underline-offset-4"
+              className="px-6 text-white dark:text-black hover:underline hover:underline-offset-4"
               href="/#portfolio"
             >
               Portfolio
             </ScrollLink>
             <ScrollLink
-              className="px-6 hover:underline hover:underline-offset-4"
+              className="px-6 text-white dark:text-black hover:underline hover:underline-offset-4"
               href="/#contact"
             >
               Contact Me
