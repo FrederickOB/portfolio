@@ -21,17 +21,8 @@ export default function GoogleAnalytics({
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        onLoad={() => {
-          const win: any = window;
-          win.dataLayer = win.dataLayer || [];
-          function gtag() {
-            win.dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", GA_MEASUREMENT_ID);
-        }}
       />
-      {/* <Script
+      <Script
         id="google-analytics"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -49,7 +40,7 @@ export default function GoogleAnalytics({
                 });
                 `,
         }}
-      /> */}
+      />
     </>
   );
 }

@@ -63,7 +63,7 @@ export default function Contact() {
           <Heading text="Contact Me" />
           <div className="text-xs lg:text-base">
             <p>
-              Let's collaborate to bring your visions into a reality. I am
+              Let&apos;s collaborate to bring your visions into a reality. I am
               available to work remotely and locally.
             </p>
             <p>
