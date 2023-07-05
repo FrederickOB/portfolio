@@ -73,10 +73,10 @@ export default function Intro() {
           </div>
         </div>
         <div
-          className={`flex items-center justify-center order-1 w-full text-center ${color.text} col-span-full lg:col-span-4 lg:order-2`}
+          className={`flex items-center justify-center order-1 w-full lg:w-fit text-center ${color.text} col-span-full lg:col-span-4 lg:order-2`}
         >
           <img
-            className={`relative lg:scale-150 ${color.glow} pulseAnimation`}
+            className={` xl:scale-150 ${color.glow} pulseAnimation`}
             src="https://firebasestorage.googleapis.com/v0/b/portoflio-79eeb.appspot.com/o/memoji.gif?alt=media&token=b6027028-1d21-4948-88ae-de0b5092c953"
             alt="Next.js Logo"
             width={300}

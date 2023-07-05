@@ -39,7 +39,7 @@ export default function Tabs({ list }: TabProps) {
                     key={item.id || idx}
                     className={({ selected }) =>
                       classNames(
-                        "w-full min-w-[5rem] lg:min-w-[8rem]  lg:py-2.5 text-xs lg:text-sm font-medium leading-5 rounded-full",
+                        "w-full min-w-[5rem] lg:min-w-[8rem]  md:py-2.5 text-xs lg:text-sm font-medium leading-5 rounded-full",
                         "ring-white ring-opacity-60 ring-offset-2  focus:outline-none ",
                         selected
                           ? `bg-white shadow  ${color.text} `
@@ -54,7 +54,7 @@ export default function Tabs({ list }: TabProps) {
             </Tab.List>
           </div>
           <Tab.Panels className="mt-3 lg:mt-8">
-            <Tab.Panel className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <Tab.Panel className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {projects && projects.length > 0
                 ? projects.map((item: QueryData) => (
                     <ProjectCards
@@ -67,7 +67,7 @@ export default function Tabs({ list }: TabProps) {
                   ))
                 : null}
             </Tab.Panel>
-            <Tab.Panel className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <Tab.Panel className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {uiux && uiux.length > 0
                 ? uiux.map((item: QueryData) => (
                     <ProjectCards

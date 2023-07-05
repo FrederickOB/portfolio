@@ -27,7 +27,9 @@ export default function ProjectCards({
 }: ProjectCardsProps) {
   const { color } = useThemeColor();
   return (
-    <div className="relative flex flex-col w-full transition-all min-h-96 max-h-fit rounded-xl drop-shadow-[0_0_0.75rem_#6366F190]">
+    <div
+      className={`relative flex flex-col w-full transition-all min-h-96 max-h-fit rounded-xl ${color.softGlow}`}
+    >
       {picture ? (
         <Image
           src={picture}
@@ -38,7 +40,7 @@ export default function ProjectCards({
         />
       ) : null}
 
-      <div className="flex flex-col justify-between h-full p-4 space-y-3 bg-white rounded-b-xl dark:bg-black dark:text-white">
+      <div className="flex flex-col justify-between p-4 space-y-3 bg-white h-fit md:h-full rounded-b-xl dark:bg-black dark:text-white">
         <div className="space-y-3">
           <h3
             className={`text-base font-bold leading-5 ${color.text} break-words lg:text-lg line-clamp-2`}

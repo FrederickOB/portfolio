@@ -145,7 +145,14 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="md:justify-between md:flex ">
+          <div className="flex-col space-y-6 md:justify-between md:flex lg:flex-row">
+            {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+              <ReCAPTCHA
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                ref={captchaRef}
+                size="invisible"
+              />
+            )}
             <button
               onClick={onSubmit}
               disabled={
@@ -153,17 +160,17 @@ export default function Contact() {
                 !emailDetails.email ||
                 !emailDetails.message
               }
-              className={`flex items-center py-2 pl-4 pr-5 text-base transition-transform ${color.bg} rounded-lg h-fit hover:scale-110 disabled:grayscale`}
+              className={`flex items-center justify-center py-2 pl-4 pr-5 text-base transition-transform ${color.bg} rounded-lg h-fit hover:scale-110 disabled:grayscale`}
             >
-              send mail
+              <p> send mail</p>
               <BiMailSend className="ml-2 text-xl" />
             </button>
-            {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+            {/* {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
               <ReCAPTCHA
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                 ref={captchaRef}
               />
-            )}
+            )} */}
           </div>
         </div>
       </div>

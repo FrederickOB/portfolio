@@ -68,7 +68,9 @@ export default function Navbar() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute right-0 z-10 w-40 mt-4 origin-top-right bg-indigo-100 outline-none">
+              <Menu.Items
+                className={`absolute right-0 z-10 w-40 mt-[1.125rem] origin-top-right ${color.bg} outline-none`}
+              >
                 <div className="py-1">
                   <ColorMenuItems />
                 </div>
@@ -190,6 +192,7 @@ const ColorMenuItems = () => {
                 border: "border-indigo-500",
                 hoverText: "hover:text-indigo-500",
                 glow: "drop-shadow-[0_0_2rem_#6366F190]",
+                softGlow: "drop-shadow-[0_0_0.75rem_#6366F190]",
                 hex: "6366F1",
               })
             }
@@ -212,6 +215,7 @@ const ColorMenuItems = () => {
                 border: "border-green-500",
                 hoverText: "hover:text-green-500",
                 glow: "drop-shadow-[0_0_2rem_#22C55E90]",
+                softGlow: "drop-shadow-[0_0_0.75rem_#22C55E90]",
                 hex: "22C55E",
               })
             }
@@ -234,6 +238,7 @@ const ColorMenuItems = () => {
                 border: "border-blue-500",
                 hoverText: "hover:text-blue-500",
                 glow: "drop-shadow-[0_0_2rem_#3B82F690]",
+                softGlow: "drop-shadow-[0_0_0.75rem_#3B82F690]",
                 hex: "3B82F6",
               })
             }
@@ -256,6 +261,7 @@ const ColorMenuItems = () => {
                 border: "border-red-500",
                 hoverText: "hover:text-red-500",
                 glow: "drop-shadow-[0_0_2rem_#EF444490]",
+                softGlow: "drop-shadow-[0_0_0.75rem_#EF444490]",
                 hex: "EF4444",
               })
             }
@@ -278,6 +284,7 @@ const ColorMenuItems = () => {
                 border: "border-orange-500",
                 hoverText: "hover:text-orange-500",
                 glow: "drop-shadow-[0_0_2rem_#F9731690]",
+                softGlow: "drop-shadow-[0_0_0.75rem_#F9731690]",
                 hex: "F97316",
               })
             }

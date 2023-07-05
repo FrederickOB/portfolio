@@ -16,6 +16,7 @@ export const ThemeColorContextProvider = ({
     hoverText: "hover:text-indigo-500",
     border: "border-indigo-500",
     glow: "drop-shadow-[0_0_2rem_#6366F190]",
+    softGlow: "drop-shadow-[0_0_0.75rem_#6366F190]",
     hex: "6366F1",
   });
 
