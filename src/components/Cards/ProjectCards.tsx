@@ -28,9 +28,7 @@ export default function ProjectCards({
   const { color } = useThemeColor();
   return (
     <div className="relative flex flex-col w-full transition-all min-h-96 max-h-fit rounded-xl drop-shadow-[0_0_0.75rem_#6366F190]">
-      {video ? (
-        <video src={video} muted autoPlay loop />
-      ) : (
+      {picture ? (
         <Image
           src={picture}
           width={900}
@@ -38,7 +36,7 @@ export default function ProjectCards({
           className="object-cover w-full h-full max-h-[50%] aspect-video rounded-t-xl"
           alt={`${title} project`}
         />
-      )}
+      ) : null}
 
       <div className="flex flex-col justify-between h-full p-4 space-y-3 bg-white rounded-b-xl dark:bg-black dark:text-white">
         <div className="space-y-3">
