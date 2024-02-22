@@ -39,6 +39,7 @@ export default function Intro() {
                 target="_blank"
                 rel="noreferrer noopener"
                 href="https://github.com/FrederickOB"
+                data-umami-event="github link"
                 className={`flex space-x-4 text-2xl transition-colors duration-700 ${color.hoverText} hover:animate-pulse`}
               >
                 <FiGithub />
@@ -48,6 +49,7 @@ export default function Intro() {
                 target="_blank"
                 rel="noreferrer noopener"
                 href="https://www.linkedin.com/in/frederick-ofori-boadu/"
+                data-umami-event="linkedin link"
                 className={`flex items-center space-x-4 text-2xl transition-colors duration-700 ${color.hoverText} hover:animate-pulse`}
               >
                 <FiLinkedin />
@@ -57,6 +59,7 @@ export default function Intro() {
                 target="_blank"
                 rel="noreferrer noopener"
                 href="https://twitter.com/FRED_THE_THIRD"
+                data-umami-event="twitter link"
                 className={`flex items-center space-x-4 text-2xl transition-colors duration-700 ${color.hoverText} hover:animate-pulse`}
               >
                 <FiTwitter />
@@ -65,6 +68,7 @@ export default function Intro() {
                 href="https://drive.google.com/file/d/1wYa-ItRGthDkWAVMXS-GuY635lebQ4wK/view?usp=sharing"
                 className={`${color.border} border px-2 py-1 rounded flex items-center space-x-2`}
                 target="_blank"
+                data-umami-event="download resume"
               >
                 <p>Resume</p>
                 <HiOutlineDocumentDownload></HiOutlineDocumentDownload>

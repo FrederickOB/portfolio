@@ -83,6 +83,7 @@ export default function Contact() {
             <a
               target="_blank"
               rel="noreferrer noopener"
+              data-umami-event="github link"
               href="https://github.com/FrederickOB"
               className={`flex items-center space-x-4 transition-colors duration-700 ${color.hoverText} hover:animate-pulse ${color.text}`}
             >
@@ -94,6 +95,7 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer noopener"
               href="https://www.linkedin.com/in/frederick-ofori-boadu/"
+              data-umami-event="linkedin link"
               className={`flex items-center space-x-4 transition-colors duration-700 ${color.hoverText} hover:animate-pulse ${color.text}`}
             >
               <FiLinkedin />
@@ -104,6 +106,7 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer noopener"
               href="https://twitter.com/FRED_THE_THIRD"
+              data-umami-event="twitter link"
               className={`flex items-center space-x-4 transition-colors duration-700 ${color.hoverText} hover:animate-pulse ${color.text}`}
             >
               <FiTwitter />
@@ -160,6 +163,7 @@ export default function Contact() {
                 !emailDetails.email ||
                 !emailDetails.message
               }
+              data-umami-event="send email button"
               className={`flex items-center justify-center py-2 pl-4 pr-5 text-base transition-transform ${color.bg} rounded-lg h-fit hover:scale-110 disabled:grayscale`}
             >
               <p> send mail</p>
