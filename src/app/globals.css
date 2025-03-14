@@ -4,47 +4,122 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 245, 245, 245;
+  --scrollbar-thumb: 200, 200, 200;
+  --scrollbar-track: 245, 245, 245;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 10, 10, 10;
+  --scrollbar-thumb: 50, 50, 50;
+  --scrollbar-track: 20, 20, 20;
+}
+
+/* Remove or comment out the [data-theme="dark"] selector if it's causing conflicts */
+/* [data-theme="dark"] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 10, 10, 10;
+  --scrollbar-thumb: 50, 50, 50;
+  --scrollbar-track: 20, 20, 20;
+} */
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-black text-black dark:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-.glass {
-  /* background: rgba(99, 101, 241, 0.6); */
+@layer utilities {
+  .glass {
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md;
+  }
 
-  /* border-radius: 16px; */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.8px);
-  -webkit-backdrop-filter: blur(9.8px);
-  /* border: 1px solid rgba(255, 255, 255, 0.12); */
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-.pulseAnimation {
-  animation: puls 4s infinite;
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@-webkit-keyframes puls {
-  0% {
+::-webkit-scrollbar-track {
+  background: rgb(var(--scrollbar-track));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--scrollbar-thumb));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--scrollbar-thumb), 0.8);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation utilities */
+@layer components {
+  .animate-fade-in {
+    @apply opacity-0 animate-[fade-in_0.5s_ease-in-out_forwards];
   }
-  70% {
-    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.1));
+
+  .animate-slide-up {
+    @apply opacity-0 translate-y-4 animate-[slide-up_0.5s_ease-in-out_forwards];
   }
-  100% {
+
+  .animate-slide-in-right {
+    @apply opacity-0 translate-x-4 animate-[slide-in-right_0.5s_ease-in-out_forwards];
   }
 }
-@keyframes puls {
-  0% {
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  70% {
-    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.1));
+  to {
+    opacity: 1;
   }
-  100% {
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Add these rules to prevent horizontal overflow */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }

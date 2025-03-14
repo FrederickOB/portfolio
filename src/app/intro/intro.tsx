@@ -1,93 +1,172 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
-import Image from "next/image";
-import { useThemeColor } from "@/context/ColorThemeContext";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
+import { motion } from "framer-motion";
+import { useThemeColor } from "@/context/ColorThemeContext";
 
 export default function Intro() {
   const { color } = useThemeColor();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
+  const skills = [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "React Native",
+    "Figma",
+  ];
 
   return (
-    <main className="flex items-center justify-center w-screen h-full min-h-screen px-8 pt-20 pb-12 lg:p-0 scroll-smooth">
-      <section className="grid w-full grid-cols-1 max-w-[75rem] lg:grid-cols-12 gap-10 ">
-        <div
-          className={`order-2 w-full space-y-6 text-xl ${color.text} col-span-full lg:col-span-8 lg:order-2 extrabold md:text-4xl`}
+    <main className="flex items-center justify-center pt-20 xl:pt-0 w-full h-full min-h-screen scroll-smooth">
+      <motion.section
+        className="grid w-full grid-cols-1  lg:grid-cols-12 gap-10"
+        variants={container}
+        initial="hidden"
+        animate={isLoaded ? "show" : "hidden"}
+      >
+        <motion.div
+          className="order-2 w-full space-y-8 lg:col-span-8 lg:order-1"
+          variants={item}
         >
-          <div>Frederick Ofori-Boadu Osei 🇬🇭</div>
-          <div className={`text-sm font-bold ${color.text} md:text-xl`}>
-            Front-End Developer And UI/UX Designer
+          <div className="space-y-3">
+            <motion.div
+              className={`text-sm font-medium ${color.text} tracking-wider uppercase`}
+              variants={item}
+            >
+              Hello, I'm
+            </motion.div>
+            <motion.h1
+              className={`text-4xl md:text-6xl font-bold ${color.text}`}
+              variants={item}
+            >
+              Frederick Ofori-Boadu Osei
+            </motion.h1>
+            <motion.div
+              className={`text-xl font-medium ${color.text} md:text-2xl mt-2`}
+              variants={item}
+            >
+              Front-End Developer & UI/UX Designer
+            </motion.div>
           </div>
 
-          <div
-            className={`py-3 space-y-4 text-xs font-thin ${color.text} border-t-2 ${color.border} md:text-sm bg-white dark:bg-black`}
+          <motion.div
+            className="py-6 space-y-6 text-sm md:text-base text-black dark:text-white"
+            variants={item}
           >
-            <p className="leading-6 ">
+            <p className="leading-relaxed">
               Join me on an epic coding adventure as your trusty front-end
               developer 🚀! With expertise in ReactJS, NextJS, React Native,
-              Typescript, and the magic of Figma, I&apos;m here to create
+              Typescript, and the magic of Figma, I'm here to create
               mind-blowing web designs that wow users. From solving complex
-              issues to prioritizing performance and user experience, I&apos;m
-              the adaptable, collaborative wizard you need. Together, we&apos;ll
-              revolutionize the digital landscape and craft unforgettable
-              websites. So, buckle up and explore my interactive portfolio.
-              Let&apos;s make the web a more delightful place 😊, one line of
-              code at a time!
+              issues to prioritizing performance and user experience, I'm the
+              adaptable, collaborative wizard you need.
             </p>
-            <div className="flex space-x-4 md:space-x-4">
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://github.com/FrederickOB"
-                data-umami-event="github link"
-                className={`flex space-x-4 text-2xl transition-colors duration-700 ${color.hoverText} hover:animate-pulse`}
-              >
-                <FiGithub />
-              </a>
+            <p className="leading-relaxed">
+              Together, we'll revolutionize the digital landscape and craft
+              unforgettable websites. Let's make the web a more delightful place
+              😊, one line of code at a time!
+            </p>
+          </motion.div>
 
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://www.linkedin.com/in/frederick-ofori-boadu/"
-                data-umami-event="linkedin link"
-                className={`flex items-center space-x-4 text-2xl transition-colors duration-700 ${color.hoverText} hover:animate-pulse`}
+          <motion.div className="flex flex-wrap gap-2 pt-4" variants={item}>
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className={`px-3 py-1 text-sm rounded-full ${color.bg} bg-opacity-10 ${color.text} border ${color.border}`}
               >
-                <FiLinkedin />
-              </a>
+                {skill}
+              </span>
+            ))}
+          </motion.div>
 
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://twitter.com/FRED_THE_THIRD"
-                data-umami-event="twitter link"
-                className={`flex items-center space-x-4 text-2xl transition-colors duration-700 ${color.hoverText} hover:animate-pulse`}
-              >
-                <FiTwitter />
-              </a>
-              <a
-                href="https://drive.google.com/file/d/1wYa-ItRGthDkWAVMXS-GuY635lebQ4wK/view?usp=sharing"
-                className={`${color.border} border px-2 py-1 rounded flex items-center space-x-2`}
-                target="_blank"
-                data-umami-event="download resume"
-              >
-                <p>Resume</p>
-                <HiOutlineDocumentDownload></HiOutlineDocumentDownload>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          className={`flex items-center justify-center order-1 w-full lg:w-fit text-center ${color.text} col-span-full lg:col-span-4 lg:order-2`}
+          <motion.div className="flex flex-wrap gap-6 pt-6" variants={item}>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://github.com/FrederickOB"
+              data-umami-event="github link"
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full border ${color.border} ${color.text} hover:${color.bg} hover:bg-opacity-10 transition-all duration-300`}
+            >
+              <FiGithub />
+              <span>GitHub</span>
+            </a>
+
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://www.linkedin.com/in/frederick-ofori-boadu/"
+              data-umami-event="linkedin link"
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full border ${color.border} ${color.text} hover:${color.bg} hover:bg-opacity-10 transition-all duration-300`}
+            >
+              <FiLinkedin />
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              href="https://twitter.com/FRED_THE_THIRD"
+              data-umami-event="twitter link"
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full border ${color.border} ${color.text} hover:${color.bg} hover:bg-opacity-10 transition-all duration-300`}
+            >
+              <FiTwitter />
+              <span>Twitter</span>
+            </a>
+
+            <a
+              href="https://drive.google.com/file/d/1wYa-ItRGthDkWAVMXS-GuY635lebQ4wK/view?usp=sharing"
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full ${color.bg} text-white hover:opacity-90 transition-all duration-300`}
+              target="_blank"
+              data-umami-event="download resume"
+            >
+              <span>Download Resume</span>
+              <HiOutlineDocumentDownload />
+            </a>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="flex items-center justify-center order-1 w-full lg:col-span-4 lg:order-2"
+          variants={item}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
         >
-          <img
-            className={` xl:scale-150 ${color.glow} pulseAnimation`}
-            src="https://firebasestorage.googleapis.com/v0/b/portoflio-79eeb.appspot.com/o/memoji.gif?alt=media&token=b6027028-1d21-4948-88ae-de0b5092c953"
-            alt="Next.js Logo"
-            width={300}
-            height={300}
-          />
-        </div>
-      </section>
+          <div className="relative">
+            <div
+              className={`absolute inset-0 rounded-full ${color.bg} opacity-20 blur-3xl -z-10`}
+            ></div>
+            <img
+              className={`relative z-10 ${color.softGlow}`}
+              src="https://firebasestorage.googleapis.com/v0/b/portoflio-79eeb.appspot.com/o/memoji.gif?alt=media&token=b6027028-1d21-4948-88ae-de0b5092c953"
+              alt="Frederick's Avatar"
+              width={300}
+              height={300}
+            />
+          </div>
+        </motion.div>
+      </motion.section>
     </main>
   );
 }
