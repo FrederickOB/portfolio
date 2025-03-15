@@ -161,7 +161,7 @@ export default function Index() {
             </div>
             <div className="text-left">
               <h3 className={`text-lg font-bold ${color.text} mb-4`}>
-                Let's Connect
+                Let&apos;s Connect
               </h3>
               <p className="text-sm mb-2">
                 Available for freelance and full-time opportunities

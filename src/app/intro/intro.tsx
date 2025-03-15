@@ -55,7 +55,7 @@ export default function Intro() {
               className={`text-sm font-medium ${color.text} tracking-wider uppercase`}
               variants={item}
             >
-              Hello, I'm
+              Hello, I&apos;m
             </motion.div>
             <motion.h1
               className={`text-4xl md:text-6xl font-bold ${color.text}`}
