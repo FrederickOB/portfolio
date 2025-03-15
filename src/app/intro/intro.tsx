@@ -78,14 +78,14 @@ export default function Intro() {
             <p className="leading-relaxed">
               Join me on an epic coding adventure as your trusty front-end
               developer 🚀! With expertise in ReactJS, NextJS, React Native,
-              Typescript, and the magic of Figma, I'm here to create
+              Typescript, and the magic of Figma, I&apos;m here to create
               mind-blowing web designs that wow users. From solving complex
-              issues to prioritizing performance and user experience, I'm the
+              issues to prioritizing performance and user experience, I&apos;m the
               adaptable, collaborative wizard you need.
             </p>
             <p className="leading-relaxed">
-              Together, we'll revolutionize the digital landscape and craft
-              unforgettable websites. Let's make the web a more delightful place
+              Together, we&apos;ll revolutionize the digital landscape and craft
+              unforgettable websites. Let&apos;s make the web a more delightful place
               😊, one line of code at a time!
             </p>
           </motion.div>
