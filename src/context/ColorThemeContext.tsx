@@ -1,58 +1,44 @@
-"use client";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
+import {
+  DEFAULT_COLOR_THEME,
+  loadStoredColorTheme,
+  saveColorTheme,
+  type ColorTheme,
+} from "@/lib/theme-colors";
 
-import { createContext, useContext, useState } from "react";
-
-// Define the color theme type
-export interface ColorTheme {
-  bg: string;
-  text: string;
-  hoverText: string;
-  border: string;
-  glow: string;
-  softGlow: string;
-  hex: string;
-}
-
-// Define the context type
 interface ThemeColorContextType {
   color: ColorTheme;
   setColor: (color: ColorTheme) => void;
 }
 
-// Create context with proper typing and default values
 const ThemeColorContext = createContext<ThemeColorContextType>({
-  color: {
-    bg: "bg-indigo-500",
-    text: "text-indigo-500",
-    hoverText: "hover:text-indigo-500",
-    border: "border-indigo-500",
-    glow: "drop-shadow-[0_0_2rem_#6366F190]",
-    softGlow: "drop-shadow-[0_0_0.75rem_#6366F190]",
-    hex: "6366F1",
-  },
+  color: DEFAULT_COLOR_THEME,
   setColor: () => {},
 });
 
 export const useThemeColor = () => useContext(ThemeColorContext);
 
-export const ColorThemeProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [color, setColor] = useState<ColorTheme>({
-    bg: "bg-indigo-500",
-    text: "text-indigo-500",
-    hoverText: "hover:text-indigo-500",
-    border: "border-indigo-500",
-    glow: "drop-shadow-[0_0_2rem_#6366F190]",
-    softGlow: "drop-shadow-[0_0_0.75rem_#6366F190]",
-    hex: "6366F1",
-  });
+export function ColorThemeProvider({ children }: { children: ReactNode }) {
+  const [color, setColorState] = useState<ColorTheme>(DEFAULT_COLOR_THEME);
+
+  useEffect(() => {
+    setColorState(loadStoredColorTheme());
+  }, []);
+
+  const setColor = (next: ColorTheme) => {
+    setColorState(next);
+    saveColorTheme(next);
+  };
 
   return (
     <ThemeColorContext.Provider value={{ color, setColor }}>
       {children}
     </ThemeColorContext.Provider>
   );
-};
+}
