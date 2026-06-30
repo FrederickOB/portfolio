@@ -28,7 +28,7 @@ function SideProjectCard({
           <img
             src={project.image}
             alt={project.title}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            className="h-full w-full object-cover aspect-video object-top transition duration-500 group-hover:scale-105"
             loading="lazy"
             onError={() => setImageFailed(true)}
           />
@@ -36,7 +36,9 @@ function SideProjectCard({
         </div>
       ) : (
         <div className="flex h-28 items-end bg-gradient-to-br from-gray-100 to-gray-200 p-4 dark:from-gray-800 dark:to-gray-900">
-          <span className={`text-xs font-medium uppercase tracking-wider ${color.text}`}>
+          <span
+            className={`text-xs font-medium uppercase tracking-wider ${color.text}`}
+          >
             {project.kind === "freelance" ? "Freelance" : "Personal"}
           </span>
         </div>
@@ -48,7 +50,9 @@ function SideProjectCard({
             {project.title}
           </h3>
           {project.period && (
-            <span className="shrink-0 text-xs text-muted-foreground">{project.period}</span>
+            <span className="shrink-0 text-xs text-muted-foreground">
+              {project.period}
+            </span>
           )}
         </div>
 

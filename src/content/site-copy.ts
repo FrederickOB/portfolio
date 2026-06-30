@@ -7,6 +7,7 @@ export const SITE_LINKS = {
   phoneTel: "+233246789303",
   resume:
     "https://drive.google.com/file/d/1wYa-ItRGthDkWAVMXS-GuY635lebQ4wK/view?usp=sharing",
+  gseDailyScraper: "https://github.com/FrederickOB/gse_daily_scrapper",
   memoji:
     "https://firebasestorage.googleapis.com/v0/b/portoflio-79eeb.appspot.com/o/memoji.gif?alt=media&token=b6027028-1d21-4948-88ae-de0b5092c953",
 } as const;
@@ -16,7 +17,7 @@ export const CASE_STUDY_IMAGES = {
   afap: "/case-studies/afap.png",
   pprsd: "/case-studies/pprsd.png",
   agrominds: "/case-studies/agrominds.jpg",
-  chaleCard: "/case-studies/chale-card.png",
+  chaleCard: "/case-studies/chale-cards.png",
   agama:
     "https://firebasestorage.googleapis.com/v0/b/portoflio-79eeb.appspot.com/o/agama.png?alt=media&token=e043b89a-718a-4962-afbc-22bb4c19e012",
   grainThesis: "/case-studies/grain-thesis.jpg",
@@ -25,7 +26,11 @@ export const CASE_STUDY_IMAGES = {
   sonlife: "/case-studies/sonlife.png",
   teenOne: "/case-studies/teen-one.png",
   tripath: "/case-studies/tripath.png",
+  gse: "/case-studies/gse.png",
+  prempeh: "/case-studies/prempeh.png",
   purpleOyster: "/case-studies/purple-oyster.png",
+  worldcup: "/case-studies/worldcup.png",
+  stanbic: "/case-studies/stanbic.jpg",
 } as const;
 
 // Headline alternatives (swap HOME_COPY.headline to use):
@@ -34,17 +39,17 @@ export const CASE_STUDY_IMAGES = {
 
 export const HOME_COPY = {
   seo: {
-    title: "Frederick Ofori-Boadu | Frontend Engineer & Data Analyst, Accra",
+    title: "Frederick Ofori-Boadu | Frontend Engineer & Data Expert, Accra",
     description:
       "Frontend engineer with 6+ years building React, Next.js and React Native products, now combining that with data engineering, AI integration, and analytics. Based in Accra, Ghana.",
   },
-  eyebrow: "Frontend Engineer × Data Analyst",
+  eyebrow: "Frontend Engineer × Data Expert",
   headline:
     "I build the screen people use, and the data that makes it worth using and drives decisions.",
   subhead:
     "React & React Native engineer with 6+ years shipping production apps, now building data pipelines, AI-powered tools, and analytics at Stanbic Bank.",
   heroHighlights: [
-    "Stanbic Bank · Data Analyst",
+    "Stanbic Bank · Data Expert",
     "MSc Business Analytics",
     "Accra, Ghana",
   ],
@@ -151,7 +156,7 @@ export const HOME_COPY = {
       "Open to frontend, data, AI integration, or full-stack-of-insight roles and projects.",
   },
   sideProjectsIntro:
-    "Freelance client websites on the frontend portfolio, plus personal builds across frontend engineering and data analytics.",
+    "Freelance client websites, data consulting deliverables, and personal builds across frontend engineering and analytics.",
   freelancePreview: [
     {
       title: "Panache Services",
@@ -191,6 +196,15 @@ export const HOME_COPY = {
       kind: "freelance",
     },
   ],
+  dataFreelancePreview: [
+    {
+      title: "Prempeh College · WASSCE Report",
+      description:
+        "Analytics report for the Academic Committee on historical WASSCE results, with trend analysis, SWOT insights, and strategic recommendations.",
+      tags: ["Trend Analysis", "SWOT", "WASSCE", "Education"],
+      kind: "freelance",
+    },
+  ],
   personalPreview: [
     {
       title: "IESO Bootcamp Portal",
@@ -225,6 +239,14 @@ export const HOME_COPY = {
       tags: ["Python", "Predictive Analytics", "Research"],
       kind: "personal",
       image: CASE_STUDY_IMAGES.grainThesis,
+    },
+    {
+      title: "GSE Daily Overview",
+      description:
+        "Automated pipeline that scrapes daily market data from the Ghana Stock Exchange with Python and Selenium, cleans and structures the output, and feeds a Power BI report for daily market tracking.",
+      tags: ["Python", "Selenium", "Power BI", "Web Scraping"],
+      kind: "personal",
+      githubUrl: SITE_LINKS.gseDailyScraper,
     },
   ],
 } as const;
@@ -342,7 +364,11 @@ export const FRONTEND_COPY = {
       tags: "React, TypeScript, AI integration · sole frontend developer, Chale Card LLC (Las Vegas, NV)",
       body: "Chale Card shipped physical greeting cards through a Wix storefront. As the sole frontend developer, I led the build of a new React and TypeScript web application that integrated AI generation into the product flow. Users could create instant, AI-generated digital cards through API-connected backends, replacing physical shipping with on-demand delivery anywhere with an internet connection. I owned the full frontend experience around that AI integration, including generation states, previews, and error handling, plus a saved-recipient feature that let users send cards in a couple of clicks instead of re-entering details every time.",
       image: CASE_STUDY_IMAGES.chaleCard,
-      metrics: ["AI-generated cards", "Sole frontend dev", "React + TypeScript"],
+      metrics: [
+        "AI-generated cards",
+        "Sole frontend dev",
+        "React + TypeScript",
+      ],
     },
     {
       title: "Agama Africana: A Social Platform From the Ground Up",
@@ -367,7 +393,13 @@ export const FRONTEND_COPY = {
       title: "Sonlife Printing Press",
       description:
         "Designed and built a modern, mobile-first marketing website for Sonlife Printing Press, one of Ghana's printing businesses. The site covers services, a portfolio gallery, promotions, an online bookshop, about content, and a quote request flow, with Framer Motion animations and shadcn/ui components throughout.",
-      tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
+      tags: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "shadcn/ui",
+      ],
       kind: "freelance",
       liveUrl: "https://sonlife.com",
       image: CASE_STUDY_IMAGES.sonlife,
@@ -540,6 +572,7 @@ export const DATA_COPY = {
       tags: "Python, ETL, Power Automate, LLM engineering · Data Analyst (Graduate Internship), Jan 2026-present",
       body: "Stepped into a bank-wide data function and immediately started removing manual bottlenecks: designed automated workflows in Microsoft Power Automate to cut repetitive operational work, built web scraping tools and API integrations to feed analytics and ML pipelines with clean data, and built and maintained ETL pipelines that pull from multiple sources into analysis-ready, structured storage. A major focus of the role has been AI engineering: I designed and built an automated, agentic news aggregation engine that scrapes sources, filters relevance, and uses LLMs to curate and generate newsletter-ready insights for internal business units. I also shipped reporting dashboards that teams now use directly for operational decisions.",
       metrics: ["ETL pipelines", "Agentic AI engine", "Power Automate"],
+      image: CASE_STUDY_IMAGES.stanbic,
     },
     {
       title: "Agama Africana: From Clicks to Insights",
@@ -555,21 +588,41 @@ export const DATA_COPY = {
       image: CASE_STUDY_IMAGES.grainThesis,
       metrics: ["MSc thesis", "Predictive modeling", "Ghana grain markets"],
     },
-    {
-      title: "Credit Guarantee Analytics: Agric Financing Risk",
-      tags: "React dashboards, SQL-based backend",
-      body: "Contributed to a credit guarantee application built for financial institutions handling agricultural financing, helping shape how loan risk was analyzed and surfaced. The work bridged directly from the agro-dealer data work in the AFAP project to a more formal financial risk lens.",
-      image: CASE_STUDY_IMAGES.creditGuarantee,
-      metrics: ["Agric financing", "React dashboards", "Risk analytics"],
-    },
   ] satisfies CaseStudy[],
+  freelanceWork: [
+    {
+      title: "Prempeh College · WASSCE Performance Report",
+      image: CASE_STUDY_IMAGES.prempeh,
+      description:
+        "Freelance analytics engagement for Prempeh College's Academic Committee, analyzing historical West African Senior School Certificate Examination (WASSCE) results. Delivered multi-year trend analysis across subjects and cohorts, SWOT analysis on academic strengths and gaps, pass-rate and grade-distribution breakdowns, comparative performance insights, and data-backed recommendations to guide teaching priorities, intervention planning, and resource allocation.",
+      tags: [
+        "Python",
+        "Excel",
+        "Trend Analysis",
+        "SWOT Analysis",
+        "WASSCE",
+        "Education Analytics",
+      ],
+      kind: "freelance",
+    },
+  ] satisfies ProjectEntry[],
   personalProjects: [
+    {
+      title: "GSE Daily Overview",
+      description:
+        "Built an end-to-end data pipeline that scrapes daily trading data from the Ghana Stock Exchange (GSE) website using Python and Selenium, cleans and standardizes the extracts, and loads the results into a Power BI report for a daily market overview. The workflow removes manual copy-paste from the exchange site and keeps price and volume trends current for analysis.",
+      tags: ["Python", "Selenium", "Web Scraping", "Power BI", "ETL"],
+      kind: "personal",
+      image: CASE_STUDY_IMAGES.gse,
+      githubUrl: SITE_LINKS.gseDailyScraper,
+    },
     {
       title: "World Cup Predictive Analytics",
       description:
         "Personal machine learning project applying predictive modeling to World Cup outcomes, experimenting with feature engineering and classification approaches.",
       tags: ["Python", "Machine Learning", "Sports Analytics"],
       kind: "personal",
+      image: CASE_STUDY_IMAGES.worldcup,
       githubUrl: SITE_LINKS.github,
     },
   ] satisfies ProjectEntry[],

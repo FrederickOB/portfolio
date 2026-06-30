@@ -20,7 +20,9 @@ function CaseStudyImagePlaceholder({ label }: { label: string }) {
 
   return (
     <div className="flex h-full min-h-48 items-end bg-gradient-to-br from-gray-100 to-gray-200 p-6 dark:from-gray-800 dark:to-gray-900 md:min-h-56">
-      <span className={`text-xs font-medium uppercase tracking-wider ${color.text}`}>
+      <span
+        className={`text-xs font-medium uppercase tracking-wider ${color.text}`}
+      >
         {label}
       </span>
     </div>
@@ -37,11 +39,11 @@ function CaseStudyImage({
   onError: () => void;
 }) {
   return (
-    <div className="group relative h-full min-h-48 overflow-hidden md:min-h-full">
+    <div className="group relative h-full min-h-48  overflow-hidden md:min-h-full">
       <img
         src={src}
         alt={alt}
-        className="h-full min-h-48 w-full object-cover transition duration-500 group-hover:scale-105 md:min-h-56 lg:min-h-full"
+        className="h-full min-h-48 w-full object-cover aspect-video object-top transition duration-500 group-hover:scale-105 md:min-h-56 lg:min-h-full"
         onError={onError}
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 transition group-hover:opacity-80" />

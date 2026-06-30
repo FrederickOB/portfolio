@@ -107,9 +107,16 @@ export function HomePage() {
 
           <div className="space-y-4">
             <h3 className="font-display text-lg font-semibold text-foreground">
-              Freelance
+              Freelance · Websites
             </h3>
             <SideProjectGrid projects={HOME_COPY.freelancePreview} />
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="font-display text-lg font-semibold text-foreground">
+              Freelance · Data
+            </h3>
+            <SideProjectGrid projects={HOME_COPY.dataFreelancePreview} />
           </div>
 
           <div className="space-y-4">
@@ -132,6 +139,13 @@ export function HomePage() {
               className={`group inline-flex items-center gap-2 text-sm font-medium ${color.text}`}
             >
               See all freelance work
+              <FiArrowRight className="transition group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/portfolio/data#freelance-work"
+              className={`group inline-flex items-center gap-2 text-sm font-medium ${color.text}`}
+            >
+              See all data freelance work
               <FiArrowRight className="transition group-hover:translate-x-1" />
             </Link>
             <Link

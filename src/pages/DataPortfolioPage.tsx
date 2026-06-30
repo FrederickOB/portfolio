@@ -47,8 +47,17 @@ export function DataPortfolioPage() {
           </div>
         </section>
 
+        <section id="freelance-work" className="space-y-6 scroll-mt-28">
+          <SectionHeading index="03 — Freelance">Freelance & Consulting</SectionHeading>
+          <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+            Data analytics and reporting engagements delivered on contract, outside
+            full-time employer work.
+          </p>
+          <SideProjectGrid projects={DATA_COPY.freelanceWork} />
+        </section>
+
         <section id="personal-projects" className="space-y-6 scroll-mt-28">
-          <SectionHeading index="03 — Personal">Personal Projects</SectionHeading>
+          <SectionHeading index="04 — Personal">Personal Projects</SectionHeading>
           <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
             Independent data and machine learning work outside client and employer
             case studies.
@@ -57,7 +66,7 @@ export function DataPortfolioPage() {
         </section>
 
         <section className="space-y-6">
-          <SectionHeading index="04 — Education">Education & Certifications</SectionHeading>
+          <SectionHeading index="05 — Education">Education & Certifications</SectionHeading>
           <EducationList entries={DATA_COPY.education} />
         </section>
 
