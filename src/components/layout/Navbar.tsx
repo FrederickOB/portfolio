@@ -16,11 +16,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navLinks = [
-  { name: "Home", href: "/", external: false },
+  { name: "Gallery", href: "/", external: false },
+  { name: "Catalogue", href: "/catalogue", external: false },
   { name: "Frontend Engineering", href: "/portfolio/frontend", external: false },
   { name: "Data & Analytics", href: "/portfolio/data", external: false },
   { name: "Resume", href: SITE_LINKS.resume, external: true },
-  { name: "Contact", href: "/#contact", external: false, hash: true },
+  { name: "Contact", href: "/catalogue#contact", external: false, hash: true },
 ];
 
 export function Navbar() {
@@ -39,8 +40,8 @@ export function Navbar() {
   }, []);
 
   const isActive = (href: string, hash?: boolean) => {
-    if (hash) return location.pathname === "/" && location.hash === "#contact";
-    if (href === "/") return location.pathname === "/" && location.hash !== "#contact";
+    if (hash) return location.pathname === "/catalogue" && location.hash === "#contact";
+    if (href === "/catalogue") return location.pathname === "/catalogue" && location.hash !== "#contact";
     return location.pathname === href;
   };
 

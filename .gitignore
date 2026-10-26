@@ -25,3 +25,7 @@ dist-ssr
 
 .env
 .env.local
+
+# Firebase service account keys (used by scripts/seed-firestore.ts)
+*firebase-adminsdk*.json
+*service-account*.json

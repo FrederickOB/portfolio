@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import type { CaseStudy } from "@/content/site-copy";
+import type { Work } from "@/content/types";
 import { useThemeColor } from "@/context/ColorThemeContext";
+import { sizedImage } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 const BODY_PREVIEW_LENGTH = 280;
 
-function parseTagPills(tags: string): string[] {
-  return tags
-    .split(/[·,]/)
+function tagPills({ tags, context }: Work): string[] {
+  return [...tags, ...(context?.split(",") ?? [])]
     .map((tag) => tag.trim())
     .filter(Boolean)
     .slice(0, 4);
@@ -56,7 +56,7 @@ export function CaseStudyCard({
   index = 0,
   alternate = false,
 }: {
-  study: CaseStudy;
+  study: Work;
   index?: number;
   alternate?: boolean;
 }) {
@@ -64,11 +64,13 @@ export function CaseStudyCard({
   const [imageFailed, setImageFailed] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const showImage = study.image && !imageFailed;
-  const isLongBody = study.body.length > BODY_PREVIEW_LENGTH;
+  const title = study.headline ?? study.title;
+  const body = study.body ?? study.summary ?? "";
+  const isLongBody = body.length > BODY_PREVIEW_LENGTH;
   const bodyPreview = isLongBody
-    ? `${study.body.slice(0, BODY_PREVIEW_LENGTH).trim()}…`
-    : study.body;
-  const tagPills = parseTagPills(study.tags);
+    ? `${body.slice(0, BODY_PREVIEW_LENGTH).trim()}…`
+    : body;
+  const pills = tagPills(study);
   const reversed = alternate && index % 2 === 1;
 
   return (
@@ -87,8 +89,8 @@ export function CaseStudyCard({
       >
         {showImage ? (
           <CaseStudyImage
-            src={study.image!}
-            alt={study.title}
+            src={sizedImage(study.image!, 1200)}
+            alt={title}
             onError={() => setImageFailed(true)}
           />
         ) : (
@@ -97,7 +99,7 @@ export function CaseStudyCard({
 
         <div className="flex flex-col justify-center space-y-4 p-6 md:p-8">
           <div className="flex flex-wrap gap-2">
-            {tagPills.map((tag) => (
+            {pills.map((tag) => (
               <span
                 key={tag}
                 className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${color.border} bg-white/40 dark:bg-black/20`}
@@ -108,7 +110,7 @@ export function CaseStudyCard({
           </div>
 
           <h3 className="font-display text-xl font-bold tracking-tight text-foreground md:text-2xl">
-            {study.title}
+            {title}
           </h3>
 
           {study.metrics && study.metrics.length > 0 && (
@@ -125,7 +127,7 @@ export function CaseStudyCard({
           )}
 
           <p className="text-sm leading-relaxed text-foreground/90 md:text-base">
-            {expanded || !isLongBody ? study.body : bodyPreview}
+            {expanded || !isLongBody ? body : bodyPreview}
           </p>
 
           {isLongBody && (

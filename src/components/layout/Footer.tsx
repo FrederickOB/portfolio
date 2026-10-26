@@ -38,7 +38,12 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>
               <Link to="/" className="hover:text-foreground">
-                Home
+                Gallery
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalogue" className="hover:text-foreground">
+                Catalogue
               </Link>
             </li>
             <li>
@@ -57,7 +62,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="/#contact" className="hover:text-foreground">
+              <a href="/catalogue#contact" className="hover:text-foreground">
                 Contact
               </a>
             </li>

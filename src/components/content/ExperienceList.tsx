@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import type { ExperienceEntry } from "@/content/site-copy";
+import type { Experience } from "@/content/types";
 import { useThemeColor } from "@/context/ColorThemeContext";
 
 export function ExperienceList({
   entries,
 }: {
-  entries: readonly ExperienceEntry[];
+  entries: readonly Experience[];
 }) {
   const { color } = useThemeColor();
 
@@ -13,7 +13,7 @@ export function ExperienceList({
     <div className="space-y-4">
       {entries.map((entry, index) => (
         <motion.div
-          key={`${entry.role}-${entry.company}`}
+          key={entry.id}
           initial={{ opacity: 0, x: -12 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}

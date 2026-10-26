@@ -1,19 +1,28 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
-import type { ProjectEntry } from "@/content/site-copy";
+import type { Work } from "@/content/types";
 import { useThemeColor } from "@/context/ColorThemeContext";
+import { sizedImage } from "@/lib/images";
+
+const PREVIEW_TAG_COUNT = 3;
 
 function SideProjectCard({
   project,
   index,
+  compact,
 }: {
-  project: ProjectEntry;
+  project: Work;
   index: number;
+  compact?: boolean;
 }) {
   const { color } = useThemeColor();
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = project.image && !imageFailed;
+  const description = compact
+    ? (project.summary ?? project.body)
+    : (project.body ?? project.summary);
+  const tags = compact ? project.tags.slice(0, PREVIEW_TAG_COUNT) : project.tags;
 
   return (
     <motion.article
@@ -26,7 +35,7 @@ function SideProjectCard({
       {showImage ? (
         <div className="relative h-40 overflow-hidden">
           <img
-            src={project.image}
+            src={sizedImage(project.image!, 800)}
             alt={project.title}
             className="h-full w-full object-cover aspect-video object-top transition duration-500 group-hover:scale-105"
             loading="lazy"
@@ -39,7 +48,7 @@ function SideProjectCard({
           <span
             className={`text-xs font-medium uppercase tracking-wider ${color.text}`}
           >
-            {project.kind === "freelance" ? "Freelance" : "Personal"}
+            {project.section === "freelance" ? "Freelance" : "Personal"}
           </span>
         </div>
       )}
@@ -57,7 +66,7 @@ function SideProjectCard({
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
+          {tags.map((tag) => (
             <span
               key={tag}
               className={`rounded-full border px-2 py-0.5 text-xs ${color.border} bg-white/40 dark:bg-black/20`}
@@ -68,7 +77,7 @@ function SideProjectCard({
         </div>
 
         <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
-          {project.description}
+          {description}
         </p>
 
         {(project.liveUrl || project.githubUrl) && (
@@ -102,15 +111,23 @@ function SideProjectCard({
   );
 }
 
+/** `compact` shows the short summary and fewer tags, for home-page previews. */
 export function SideProjectGrid({
   projects,
+  compact = false,
 }: {
-  projects: readonly ProjectEntry[];
+  projects: readonly Work[];
+  compact?: boolean;
 }) {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((project, index) => (
-        <SideProjectCard key={project.title} project={project} index={index} />
+        <SideProjectCard
+          key={project.id}
+          project={project}
+          index={index}
+          compact={compact}
+        />
       ))}
     </div>
   );

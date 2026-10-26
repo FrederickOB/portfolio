@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiCode, FiTrendingUp, FiZap } from "react-icons/fi";
 import { useThemeColor } from "@/context/ColorThemeContext";
+import { sizedImage } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
 interface FeaturedProject {
@@ -46,7 +47,7 @@ export function FeaturedWorkBento({
               {project.image ? (
                 <>
                   <img
-                    src={project.image}
+                    src={sizedImage(project.image, 1200)}
                     alt={project.title}
                     className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />

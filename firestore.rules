@@ -1,0 +1,59 @@
+rules_version = '2';
+
+// Portfolio content is public to read. Only admins (emails listed in
+// config/admins, added with `bun run admin:add`) can write it, and every write
+// must keep the fields the site relies on. Scripts using the Admin SDK bypass
+// these rules.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in get(/databases/$(database)/documents/config/admins).data.emails;
+    }
+
+    function isSide(value) {
+      return value in ['frontend', 'data'];
+    }
+
+    function isText(value) {
+      return value is string && value.size() > 0;
+    }
+
+    match /works/{id} {
+      allow read: if true;
+      allow delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && isText(request.resource.data.title)
+        && isSide(request.resource.data.side)
+        && request.resource.data.section in ['case-study', 'freelance', 'personal']
+        && request.resource.data.tags is list;
+    }
+
+    match /achievements/{id} {
+      allow read: if true;
+      allow delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && isText(request.resource.data.title)
+        && isText(request.resource.data.issuer)
+        && request.resource.data.kind in ['degree', 'certification', 'award']
+        && request.resource.data.sides is list;
+    }
+
+    match /experience/{id} {
+      allow read: if true;
+      allow delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && isText(request.resource.data.role)
+        && isText(request.resource.data.company)
+        && isText(request.resource.data.period)
+        && isSide(request.resource.data.side);
+    }
+
+    // Who may edit. Readable only by admins, which is how /admin and the upload
+    // function check that a signed-in account is one.
+    match /config/admins {
+      allow read: if isAdmin();
+    }
+  }
+}

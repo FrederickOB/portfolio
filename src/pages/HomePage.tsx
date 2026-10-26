@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { CTABand } from "@/components/content/CTABand";
+import { ContentGate } from "@/components/content/ContentGate";
 import { FeaturedWorkBento } from "@/components/content/FeaturedWorkBento";
 import { PageHero } from "@/components/content/PageHero";
 import { SectionHeading } from "@/components/content/SectionHeading";
@@ -10,8 +11,10 @@ import { SideProjectGrid } from "@/components/content/SideProjectGrid";
 import { StatStrip } from "@/components/content/StatStrip";
 import { TechSnapshotTable } from "@/components/content/TechSnapshotTable";
 import { PageMeta } from "@/components/seo/PageMeta";
+import { featuredWorks, worksIn } from "@/content/selectors";
 import { HOME_COPY, SITE_LINKS } from "@/content/site-copy";
 import { useThemeColor } from "@/context/ColorThemeContext";
+import { useContent } from "@/context/ContentContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const item = {
@@ -21,6 +24,14 @@ const item = {
 
 export function HomePage() {
   const { color } = useThemeColor();
+  const { works } = useContent();
+  const featured = featuredWorks(works).map((work) => ({
+    title: work.title,
+    description: work.summary ?? work.body ?? "",
+    href: `/portfolio/${work.side}`,
+    category: work.side === "frontend" ? "Frontend" : "Data",
+    image: work.image,
+  }));
 
   return (
     <>
@@ -83,7 +94,12 @@ export function HomePage() {
 
         <section className="space-y-8">
           <SectionHeading index="01 — Selected Work">Featured Projects</SectionHeading>
-          <FeaturedWorkBento projects={HOME_COPY.featuredProjects} />
+          <ContentGate
+            className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+            itemClassName="min-h-[220px]"
+          >
+            <FeaturedWorkBento projects={featured} />
+          </ContentGate>
         </section>
 
         <section className="section-panel space-y-6">
@@ -109,28 +125,36 @@ export function HomePage() {
             <h3 className="font-display text-lg font-semibold text-foreground">
               Freelance · Websites
             </h3>
-            <SideProjectGrid projects={HOME_COPY.freelancePreview} />
+            <ContentGate className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-72">
+              <SideProjectGrid projects={worksIn(works, "frontend", "freelance")} compact />
+            </ContentGate>
           </div>
 
           <div className="space-y-4">
             <h3 className="font-display text-lg font-semibold text-foreground">
               Freelance · Data
             </h3>
-            <SideProjectGrid projects={HOME_COPY.dataFreelancePreview} />
+            <ContentGate className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-72">
+              <SideProjectGrid projects={worksIn(works, "data", "freelance")} compact />
+            </ContentGate>
           </div>
 
           <div className="space-y-4">
             <h3 className="font-display text-lg font-semibold text-foreground">
               Personal · Frontend
             </h3>
-            <SideProjectGrid projects={HOME_COPY.personalPreview} />
+            <ContentGate className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-72">
+              <SideProjectGrid projects={worksIn(works, "frontend", "personal")} compact />
+            </ContentGate>
           </div>
 
           <div className="space-y-4">
             <h3 className="font-display text-lg font-semibold text-foreground">
               Personal · Data
             </h3>
-            <SideProjectGrid projects={HOME_COPY.dataPersonalPreview} />
+            <ContentGate className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" itemClassName="h-72">
+              <SideProjectGrid projects={worksIn(works, "data", "personal")} compact />
+            </ContentGate>
           </div>
 
           <div className="flex flex-wrap gap-4">
