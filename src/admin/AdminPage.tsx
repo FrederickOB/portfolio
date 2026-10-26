@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import {
   checkAdmin,
   deleteEntry,
+  describeError,
   loadEntries,
   saveEntry,
   signIn,
@@ -26,16 +27,28 @@ export function AdminPage() {
   // undefined while Firebase works out whether someone is signed in.
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const [admin, setAdmin] = useState<boolean | null>(null);
+  const [problem, setProblem] = useState<string | null>(null);
 
   useEffect(
     () =>
       watchUser(async (next) => {
         setUser(next);
         setAdmin(null);
-        if (next) setAdmin(await checkAdmin());
+        setProblem(null);
+        if (!next) return;
+        try {
+          setAdmin(await checkAdmin());
+        } catch (error) {
+          setProblem(describeError(error) ?? "Couldn’t check your access.");
+        }
       }),
     [],
   );
+
+  const startSignIn = () => {
+    setProblem(null);
+    signIn().catch((error) => setProblem(describeError(error)));
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -62,11 +75,16 @@ export function AdminPage() {
         </div>
       </header>
 
-      {user === undefined || (user && admin === null) ? (
+      {user === undefined || (user && admin === null && !problem) ? (
         <Notice title="Checking your access…" />
       ) : !user ? (
         <Notice title="Sign in to edit the portfolio">
-          <Button onClick={() => void signIn().catch(() => undefined)}>Sign in with Google</Button>
+          <Button onClick={startSignIn}>Sign in with Google</Button>
+          {problem && <ProblemText>{problem}</ProblemText>}
+        </Notice>
+      ) : problem ? (
+        <Notice title="Couldn’t check your access">
+          <ProblemText>{problem}</ProblemText>
         </Notice>
       ) : !admin ? (
         <Notice title="This account can’t edit the portfolio">
@@ -88,6 +106,14 @@ function Notice({ title, children }: { title: string; children?: React.ReactNode
       <h1 className="font-display text-2xl font-semibold">{title}</h1>
       {children}
     </div>
+  );
+}
+
+function ProblemText({ children }: { children: React.ReactNode }) {
+  return (
+    <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+      {children}
+    </p>
   );
 }
 

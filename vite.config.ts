@@ -30,9 +30,29 @@ function netlifyFunctionsInDev(routes: Record<string, string>): Plugin {
   };
 }
 
-export default defineConfig(({ mode }) => {
+/** The site can't reach Firebase without these, and Vite bakes them in at build time. */
+const FIREBASE_SETTINGS = [
+  "VITE_FIREBASE_API_KEY",
+  "VITE_FIREBASE_AUTH_DOMAIN",
+  "VITE_FIREBASE_PROJECT_ID",
+  "VITE_FIREBASE_APP_ID",
+];
+
+export default defineConfig(({ command, mode }) => {
   // Functions read server-only settings (like CLOUDINARY_URL) from process.env.
   Object.assign(process.env, loadEnv(mode, process.cwd(), ""));
+
+  // Changing these on Netlify only takes effect in the next build, so fail
+  // loudly rather than deploy a site that can't load anything.
+  if (command === "build") {
+    const missing = FIREBASE_SETTINGS.filter((name) => !process.env[name]);
+    if (missing.length) {
+      throw new Error(
+        `Missing ${missing.join(", ")}. On Netlify add them under Site configuration → Environment variables (scope must include Builds), then redeploy.`,
+      );
+    }
+    console.log(`Building for Firebase project ${process.env.VITE_FIREBASE_PROJECT_ID}`);
+  }
 
   return {
     plugins: [

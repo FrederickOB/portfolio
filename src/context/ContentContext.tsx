@@ -96,7 +96,9 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isFirebaseConfigured) {
-      console.error("Firebase is not configured. Copy .env.sample to .env.local and add your keys.");
+      console.error(
+        "Firebase is not configured. Add the VITE_FIREBASE_* settings to .env.local (or Netlify's environment variables) and rebuild.",
+      );
       setContent((prev) => ({ ...prev, status: "error" }));
       return;
     }

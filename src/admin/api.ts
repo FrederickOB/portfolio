@@ -30,14 +30,41 @@ export function signOutOfAdmin() {
   return signOut(auth);
 }
 
-/** Only admins may read config/admins (see firestore.rules), so being able to read it is the check. */
+/**
+ * Only admins may read config/admins (see firestore.rules), so being able to
+ * read it is the check. Other failures are thrown, so they aren't mistaken for
+ * "not an admin".
+ */
 export async function checkAdmin() {
   try {
     await getDoc(doc(db, "config", "admins"));
     return true;
-  } catch {
-    return false;
+  } catch (error) {
+    if ((error as { code?: string }).code === "permission-denied") return false;
+    throw error;
   }
+}
+
+/** Says what to fix for the sign-in and setup problems Firebase reports. Null when there's nothing to say. */
+export function describeError(error: unknown): string | null {
+  switch ((error as { code?: string })?.code) {
+    case "auth/popup-closed-by-user":
+    case "auth/cancelled-popup-request":
+      return null;
+    case "auth/unauthorized-domain":
+      return `Firebase doesn’t allow sign-in on ${window.location.hostname} yet. Add it in the Firebase console under Authentication → Settings → Authorized domains.`;
+    case "auth/operation-not-allowed":
+      return "Google sign-in is switched off. Turn it on in the Firebase console under Authentication → Sign-in method → Google.";
+    case "auth/popup-blocked":
+      return "The browser blocked the sign-in window. Allow pop-ups for this site and try again.";
+    case "auth/invalid-api-key":
+    case "auth/api-key-not-valid.-please-pass-a-valid-api-key.":
+      return "This build has a missing or wrong Firebase API key. Check VITE_FIREBASE_API_KEY on Netlify, then redeploy.";
+    case "auth/network-request-failed":
+    case "unavailable":
+      return "Couldn’t reach Firebase. Check your connection and try again.";
+  }
+  return error instanceof Error ? error.message : "Something went wrong.";
 }
 
 export async function loadEntries(name: CollectionName): Promise<Entry[]> {
